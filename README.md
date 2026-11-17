@@ -5,7 +5,7 @@ Agent skills for Claude Code, Codex and other agents that read `SKILL.md`.
 | Skill | What it does |
 |---|---|
 | [`github-pr`](github-pr/SKILL.md) | File a concise, ready-for-review pull request, or a stack of them. |
-| [`pr-review-guide`](pr-review-guide/SKILL.md) | Map a large PR for your own review: risk-ranked files, reading order, questions for the author. |
+| [`pr-review-guide`](pr-review-guide/SKILL.md) | Brief you on a PR you must review without knowing the project: the problem, requirements traced to code, before/after flow, then one change at a time. |
 | [`sudo-handoff`](sudo-handoff/SKILL.md) | Run root-only commands without giving the agent sudo: it writes a script, you run one line, it reads the output. |
 | [`agent-retrospective`](agent-retrospective/SKILL.md) | Review recent agent sessions for repeated mistakes and propose rule, skill or tool fixes. |
 
