@@ -1,7 +1,7 @@
 ---
 name: agent-retrospective
 description: >-
-  Review local Claude Code, Codex, Grok, and agent sessions for repeated
+  Review local Claude Code and Codex agent sessions for repeated
   mistakes, rediscovery, decision loops, and workflow improvements. Use when the
   user asks for an agent retro or wants rules, skills, tools, or process improved.
   Not for daily productivity or time tracking.
@@ -21,15 +21,14 @@ python3 -I ~/.agents/skills/agent-retrospective/scripts/retro.py --hours 168
 ```
 
 Use the user's window when supplied. The command's default is seven days. It
-reads local Claude Code, Codex, Grok, and T3-backed session directories and
+reads local Claude Code and Codex session directories (T3 threads included) and
 prints a compact inventory of the latest 30 sessions, newest first. Inventory
 subjects use actual user prompts, excluding injected AGENTS.md, skill and
 environment blocks; prompts and final replies are shown only with `--show`.
 Use `--limit 100` to include more sessions. It does not save a ledger or report.
 If a provider is absent or unsupported, say so.
 
-The roots are `~/.claude/projects`, `~/.codex/sessions`, `~/.grok/sessions`,
-and `~/.t3/grok/sessions`.
+The roots are `~/.claude/projects` and `~/.codex/sessions`.
 
 To inspect one selected session without dumping the raw log:
 
@@ -43,7 +42,7 @@ To see what agents ran in their shells across all sessions, and what failed:
 python3 -I ~/.agents/skills/agent-retrospective/scripts/retro.py --tools --hours 168
 ```
 
-It summarises Claude Code Bash calls and Codex `exec_command` calls (Grok's are not read)
+It summarises Claude Code Bash calls and Codex `exec_command` calls
 per agent: top commands (skipping `cd`/`export` set-up), errors by kind and by command with
 one redacted sample each, missing command names, and commands repeated five or more times,
 then the top commands in zsh and Nu history (whole files, not the window). Error kinds are

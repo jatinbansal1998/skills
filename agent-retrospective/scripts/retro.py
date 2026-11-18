@@ -16,8 +16,6 @@ from pathlib import Path
 ROOTS = {
     "Claude Code": Path.home() / ".claude" / "projects",
     "Codex": Path.home() / ".codex" / "sessions",
-    "Grok": Path.home() / ".grok" / "sessions",
-    "Grok (T3)": Path.home() / ".t3" / "grok" / "sessions",
 }
 INJECTED_PROMPTS = ("# AGENTS.md instructions", "<skill>", "<environment_context>")
 HELPER_PROMPTS = (
@@ -105,11 +103,6 @@ def read(path: Path, source: str, since: datetime) -> Session:
                     if item.get("type") in ("UserMessage", "AgentMessage"):
                         add(session, record.get("timestamp"), "you" if item["type"] == "UserMessage" else "agent", item.get("content"), since)
                 session.cwd = payload.get("cwd", session.cwd)
-            elif source.startswith("Grok"):
-                if kind in ("user", "assistant"):
-                    add(session, record.get("timestamp"), "you" if kind == "user" else "agent", record.get("message", record.get("content")), since)
-                elif "prompt" in record:
-                    add(session, record.get("timestamp"), "you", record["prompt"], since)
     session.turns.sort()
     return session
 
@@ -125,10 +118,7 @@ def sessions(hours: float) -> list[Session]:
     for source, root in ROOTS.items():
         if not root.exists():
             continue
-        has_chat_history = any(root.rglob("chat_history.jsonl"))
         for path in root.rglob("*.jsonl"):
-            if source.startswith("Grok") and path.name == "prompt_history.jsonl" and has_chat_history:
-                continue
             if path.stat().st_mtime < since.timestamp():
                 continue
             session = read(path, source, since)
