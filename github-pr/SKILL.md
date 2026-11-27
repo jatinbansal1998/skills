@@ -3,8 +3,8 @@ name: github-pr
 description: >-
   File a concise pull request, or a stack of them. Use whenever a PR is about to
   be opened: the user asks to raise, file, open, create a PR or says ship it,
-  finished work is ready for review, or a change is too big for one PR. Not for
-  reviewing or merging PRs.
+  finished work is ready for review, screenshots must go on a PR, or a change is
+  too big for one PR. Not for reviewing or merging PRs.
 ---
 
 # GitHub PR
@@ -14,6 +14,7 @@ description: >-
 - **Never a draft.** Never pass `--draft`, override tools that default to it, and `gh pr ready` any draft that slipped through.
 - Never PR from the base branch. Pick the base from the repo (`gh repo view --json defaultBranchRef`, or `development` if it uses one) and state it.
 - Never `--no-verify`. A failing hook is a failing check.
+- Screenshots go on a PR with `gh pr create --attach` or `gh pr edit --attach` ([references/screenshots.md](references/screenshots.md)), even when the harness has its own PR tools such as T3 Code's `pull_request_create` and `pull_request_update`. Never tell the user an upload is impossible without that file's `--help` check.
 
 ## Title
 
