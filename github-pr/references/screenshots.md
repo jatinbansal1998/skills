@@ -1,6 +1,6 @@
 # Screenshots in a PR
 
-Last verified: 2026-11-05
+Last verified: 2026-11-27
 
 Never attach customer data, private screens or credentials; uploaded asset URLs are shareable.
 
@@ -10,7 +10,7 @@ Never attach customer data, private screens or credentials; uploaded asset URLs 
    each PNG before uploading.
 
 2. **Upload** with GitHub CLI native attachments. Check that `gh pr create --help` lists
-   `--attach` (verified on `gh` 2.103.3); otherwise update `gh`, or report screenshots pending.
+   `--attach` (verified on `gh` 2.106.0); otherwise update `gh`, or report screenshots pending.
    Reference the local files in the body's `Before and after` table and pass each one:
 
    ```markdown
