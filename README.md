@@ -1,4 +1,4 @@
-# skills
+# <img src="assets/icon.svg" width="28" alt=""> skills
 
 Agent skills for Claude Code, Codex and other agents that read `SKILL.md`.
 
